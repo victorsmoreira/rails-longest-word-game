@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="game">
+    <h1>Result</h1>
+
+    <div class="letters">
+      <% params[:letters].split(' ').each do |letter| %>
+      <p><%= letter %></p>
+      <% end %>
+    </div>
+
+    <% if !@on_grid %>
+      <p>Sorry but <strong><%= params[:attempt].upcase %></strong> can't be build out of <%= params[:letters].split(' ').join(', ') %></p>
+    <% elsif !@exists %>
+      <p>Sorry but <strong><%= params[:attempt].upcase %></strong> does not seem to be an English word...</p>
+    <% else %>
+      <p><strong>Congratulations!</strong> <%= params[:attempt].upcase %> is a valid English word! </p>
+    <% end %>
+
+    <%= link_to 'Play again', root_path %>
+  </div>
+</div>
